@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#" class="navbar-brand">Recipe Book</a>
+      </div>
+  
+      <div class="navbar-default">
+        <ul class="nav navbar-nav">
+          <li routerLinkActive="active" *ngIf="isAuthenticated"><a routerLink="/recipes">{{"Recipes"|translate}}</a></li>
+          <li routerLinkActive="active" *ngIf="!isAuthenticated"><a routerLink="/auth">{{"Authenticate"|translate}}</a></li>
+          <li routerLinkActive="active"><a routerLink="/shopping-list">{{"ShoppingList" | translate}}</a></li>
+        </ul>
+  
+        <ul class="nav navbar-nav navbar-right">
+          <li *ngIf="isAuthenticated">
+            <a style="cursor: pointer;" (click)="onLogout()">{{"Logout"|translate}}</a>
+          </li>
+          <li class="dropdown" appDropdown *ngIf="isAuthenticated">
+            <a style="cursor: pointer;" class="dropdown-toogle" role="button">{{"Manage"|translate}} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a style="cursor: pointer;" (click)="onSaveData()">{{"SaveData"|translate}}</a></li>
+              <li><a style="cursor: pointer;" (click)="onFetchData()">{{"FetchData"|translate}}</a></li>
+            </ul>
+          </li>
+          <li class="dropdown" appDropdown >
+            <a style="cursor: pointer;" class="dropdown-toogle" role="button">{{"Language"|translate}} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a style="cursor: pointer;" (click)="useLanguage('en')">EN</a></li>
+              <li><a style="cursor: pointer;" (click)="useLanguage('ro')">RO</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
